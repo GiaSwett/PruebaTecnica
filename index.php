@@ -54,7 +54,7 @@
                     }
                     break;                    
                 default:
-                    print "ERROR";
+                    print "ERROR AL SOLICITAR DATOS";
                     break;
             }
 ?>

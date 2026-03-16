@@ -36,7 +36,7 @@
         public function InsertarPel(pelicula $pelicula) {
             
         if (empty($pelicula->getNombre()) && empty($pelicula->getDuracion())) {
-                print "DATOS VACIOS NO SE PUEDEN GUARDAR";
+                print "Los datos vacíos no se pueden mandar";
                 
             } else {
                 $pelicula = $this->servPeli->NuevaPeli($pelicula);

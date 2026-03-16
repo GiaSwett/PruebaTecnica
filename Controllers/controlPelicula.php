@@ -9,17 +9,18 @@
             $this->servPeli = new logicaPelicula();
         }
 
+        //
         public function ListarPel() {
                 $pelicula = $this->servPeli->ObtenerPeli();
                 
-                if ((gettype($pelicula) === 'array') && is_array($pelicula)) {
+                if (is_array($pelicula)) {
                     if (sizeof($pelicula) > 0) {
-                        print json_encode($pelicula);
+                        echo json_encode($pelicula);
                     } else {
-                        print "NO SE ENCONTRARON DATOS";
+                        echo json_encode(["mensaje" => "No hay películas registradas"]);
                     }
                 } else {
-                    print "A OCURRIDO UN ERROR AL TRAER LOS DATOS";
+                    echo json_encode(["A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
                 }
         }
 
@@ -29,7 +30,7 @@
                     print json_encode($pelicula);
                 
             } catch (Exception $ex) {
-                print "Ocurrio un problema en el servidor";
+                echo json_encode(["Ocurrio un problema en el servidor"]);
             }
         }
 
@@ -59,10 +60,10 @@
                     if (sizeof($pelicula) > 0) {
                         print json_encode($pelicula);
                     } else {
-                        echo "NO SE ENCONTRARON DATOS";
+                        echo json_encode(["NO SE ENCONTRARON DATOS"]);
                     }
                 } else {
-                    echo "A OCURRIDO UN ERROR AL TRAER LOS DATOS";
+                    echo json_encode(["A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
                 }
         }
     }   

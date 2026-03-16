@@ -28,10 +28,13 @@
         }
 
         public function NuevaPeli(pelicula $pelicula) {
+            $peliculaexiste = $this->resPel->BuscarNombre($pelicula->getNombre());
             
-            if (empty($pelicula->getNombre()) && empty($pelicula->getDuracion())) {
+            if (empty($pelicula->getNombre()) || empty($pelicula->getDuracion())) {
                 throw new Exception("Los campos no pueden ir vacios");
-            } else {
+            } if ($peliculaexiste) 
+                throw new Exception("Pelicula existente en la base de datos");
+            else {
                 $this->resPel->InsertarPel($pelicula);
             }
         }

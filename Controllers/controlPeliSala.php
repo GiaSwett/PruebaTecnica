@@ -9,16 +9,16 @@ require_once("../PruebaTecnica2.0/Services/logicaPeliSala.php");
         }
 
         public function ListarPeliFecha($fecha_publicacion){
-                $fecha=$this->serPeliSala->ObtenerPeliFecha($fecha_publicacion);
+                $peliculas=$this->serPeliSala->ObtenerPeliFecha($fecha_publicacion);
 
-                if ((gettype($fecha) === 'array') && is_array($fecha)) {
-                    if (sizeof($fecha) > 0) {
-                        print json_encode($fecha);
+                if (is_array($peliculas)) {
+                    if (sizeof($peliculas) > 0) {
+                        echo json_encode($peliculas);
                     } else {
-                        print "NO SE ENCONTRARON DATOS";
+                        echo json_encode (["Mensaje" => "NO SE ENCONTRARON DATOS"]);
                     }
                 } else {
-                    print "A OCURRIDO UN ERROR AL TRAER LOS DATOS";
+                    echo json_encode (["Mensaje" => "A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
                 }
         }
 

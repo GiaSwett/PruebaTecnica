@@ -7,7 +7,6 @@ class pelicula_salacine{
     private $fecha_fin;
 
     public function __construct(){
-
     }
 
     public function getId_salaCine(){

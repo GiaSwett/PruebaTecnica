@@ -37,7 +37,7 @@
         public function InsertarPel(pelicula $pelicula) {
             
         if (empty($pelicula->getNombre()) && empty($pelicula->getDuracion())) {
-                echo "Los datos vacíos no se pueden mandar";
+                echo json_encode(["Los datos vacíos no se pueden mandar"]);
                 
             } else {
                 $pelicula = $this->servPeli->NuevaPeli($pelicula);

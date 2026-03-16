@@ -36,7 +36,7 @@
         public function InsertarPel(pelicula $pelicula) {
             
         if (empty($pelicula->getNombre()) && empty($pelicula->getDuracion())) {
-                print "Los datos vacíos no se pueden mandar";
+                echo "Los datos vacíos no se pueden mandar";
                 
             } else {
                 $pelicula = $this->servPeli->NuevaPeli($pelicula);
@@ -59,10 +59,10 @@
                     if (sizeof($pelicula) > 0) {
                         print json_encode($pelicula);
                     } else {
-                        print "NO SE ENCONTRARON DATOS";
+                        echo "NO SE ENCONTRARON DATOS";
                     }
                 } else {
-                    print "A OCURRIDO UN ERROR AL TRAER LOS DATOS";
+                    echo "A OCURRIDO UN ERROR AL TRAER LOS DATOS";
                 }
         }
     }   

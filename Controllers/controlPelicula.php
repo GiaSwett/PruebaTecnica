@@ -29,19 +29,17 @@
                     $pelicula = $this->servPeli->ObtenerPeliId($id_pelicula);
                     print json_encode($pelicula);
                 
-            } catch (Exception $ex) {
-                echo json_encode(["Ocurrio un problema en el servidor"]);
+            } catch (Exception $e) {
+                echo json_encode(["Ocurrio un problema en el servidor" => $e->getMessage()]);
             }
         }
 
         public function InsertarPel(pelicula $pelicula) {
-            
-        if (empty($pelicula->getNombre()) && empty($pelicula->getDuracion())) {
-                echo json_encode(["Los datos vacíos no se pueden mandar"]);
-                
-            } else {
-                $pelicula = $this->servPeli->NuevaPeli($pelicula);
-                return $pelicula;
+            try {
+                return $this->servPeli->NuevaPeli($pelicula);
+                echo json_encode(["mensaje" => "Película creada correctamente"]);
+            } catch (Exception $e) {
+                echo json_encode(["error" => $e->getMessage()]);
             }
         }
 
@@ -56,7 +54,7 @@
         public function Buscar (string $nombre){
             $pelicula = $this->servPeli->BuscarPorNombre($nombre);
 
-            if ((gettype($pelicula) === 'array') && is_array($pelicula)) {
+            if (is_array($pelicula)) {
                     if (sizeof($pelicula) > 0) {
                         print json_encode($pelicula);
                     } else {

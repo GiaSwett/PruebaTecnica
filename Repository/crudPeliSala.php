@@ -11,7 +11,7 @@
             $this->conn = $bd->conector();
         }
 
-        //Presentar peliculas por fecha
+        //Presentar peliculas por fecha 
         public function Buscarfecha ($fecha_publicacion) {
             $peliculasFecha = [];
             //consulta para buscar por fecha

@@ -6,9 +6,7 @@ class pelicula {
     private $duracion;
 
     //nos permite crear objetos con los datos de la clase
-    public function __construct(){
-
-    }
+    public function __construct(){}
 
     //getter y setter (mostrar y modificar los datos de la clase) 
     public function getId_pelicula(){

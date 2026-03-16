@@ -1,9 +1,7 @@
 <?php 
     require_once("../PruebaTecnica2.0/Services/logicaPelicula.php");
     require_once ("../PruebaTecnica2.0/Model/pelicula.php");
-    //use OpenApi\Attributes as OA;
 
-    //#[OA\Tag(name: 'Películas', description: 'controlador de pelicula con sus endpoints')]
     class controlPelicula {
         private $servPeli;
 

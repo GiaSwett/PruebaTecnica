@@ -49,7 +49,7 @@
             return $guardar;
         }
 
-        //Actualizaer los datos de la tabla pelicula
+        //Actualizaer los datos de la tabla pelicula 
         public function ActualizarPel(pelicula $pelicula) {
             //consulta sql para actualizar datos
             $actu = $this->con->prepare("UPDATE pelicula SET nombre = ?, duracion = ? WHERE id_pelicula = ?");

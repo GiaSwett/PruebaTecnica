@@ -23,8 +23,6 @@
 
         /**
          * Función para obtener por id
-         * @param [integer] $id_pelicula
-         * @return void
          * 
          * esta función nos devuelve los datos especificos de una pelicula mediante el ID, nos tira el error
          * en caso de que el ID ingresado no contenga un dato.

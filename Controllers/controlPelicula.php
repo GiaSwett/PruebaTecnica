@@ -1,5 +1,5 @@
 <?php
-
+use OpenApi\Annotations as OA;
 use FFI\Exception;
 
     require_once("../PruebaTecnica2.0/Services/logicaPelicula.php");
@@ -12,7 +12,25 @@ use FFI\Exception;
             $this->servPeli = new logicaPelicula();
         }
 
-        //
+        /**
+         * @OA\GET(
+         *  summary = Listado de peliculas alojadas en la DB
+         *  description="Muestra los datos que se encuentran alojados en la tabla Pelicula", 
+         *  @OA\Response( 
+         *      response=200, 
+         *      description = Muestra el arreglo con los datos, 
+         *      @OA\Response( 
+         *          response=400,
+         *          description = Mensaje de error => Ocurrio un error al traer lo datos,
+         *          @OA\Items(
+         *              @OA\Property(property="id_pelicula", type="integer"),
+         *              @OA\Property(property="nombre", type="string"),
+         *              @OA\Property(property="duracion", type="integer"),
+         *             )
+         *          )
+         *      )
+         *  )
+         */
         public function ListarPel() {
                 $pelicula = $this->servPeli->ObtenerPeli();
                 
@@ -28,6 +46,25 @@ use FFI\Exception;
                 }
         }
 
+        /**
+         * @OA\GET(
+         *  summary = Filtro de pelicula por Id
+         *  description="Muestra datos especificos al hacer una busqueda mediante el Id", 
+         *  @OA\Response( 
+         *      response=200, 
+         *      description = Muestra los datos que correspondan a ese Id, 
+         *       @OA\Response(
+         *           response=400,
+         *           description = Mensaje de error,
+         *             @OA\Items(
+         *                 @OA\Property(property="id_pelicula", type="integer"),
+         *                 @OA\Property(property="nombre", type="string"),
+         *                 @OA\Property(property="duracion", type="integer"),
+         *             )
+         *          )
+         *      )
+         *  )
+         */
         public function ListarPelId(int $id_pelicula) {
             try {
                     $pelicula = $this->servPeli->ObtenerPeliId($id_pelicula); 
@@ -38,6 +75,29 @@ use FFI\Exception;
             }
         }
 
+        /** 
+         * @OA\Post( 
+         *      summary="Inserta una nueva pelicula", 
+         *      description="Inserta una nueva pelicula a la tabla correspondiente", 
+         *      @OA\RequestBody( 
+         *          content="Objeto de búsqueda del lado del cliente", 
+         *          required=true, 
+         *          @OA\MediaType( 
+         *              mediaType="application/json",                  
+         *              @OA\Schema(ref="#/components/schemas/SearchObject") 
+         *          ) 
+         *      ), 
+         *      @OA\Response( 
+         *          response=200, 
+         *          description="Éxito", 
+         *          @OA\Schema(ref="#/components/schemas/SearchResultObject)    
+         *      ), 
+         *      @OA\Response( 
+         *          response=404, 
+         *          description="No se pudo encontrar el recurso" 
+         *      )    
+         *  ) 
+         */
         public function InsertarPel(pelicula $pelicula) {
             try {
                 return $this->servPeli->NuevaPeli($pelicula);

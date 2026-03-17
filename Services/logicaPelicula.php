@@ -1,4 +1,7 @@
 <?php
+
+use function PHPSTORM_META\type;
+
     require_once ("../PruebaTecnica2.0/Repository/crudPelicula.php");
     require_once ("../PruebaTecnica2.0/Model/pelicula.php");
 
@@ -30,8 +33,8 @@
          * en caso de que el ID ingresado no contenga un dato.
          */
         public function ObtenerPeliId($id_pelicula) {
-            if ($id_pelicula <= 0) {
-                throw new Exception("El ID inválido.");
+            if (!is_numeric($id_pelicula) || $id_pelicula <= 0) {
+                throw new Exception("El ID inválido. Ingreselo nuevamente");
             }else {
                 $pelicula = $this->resPel->ObtenerId($id_pelicula);
             }
@@ -43,7 +46,9 @@
             
             if (empty($pelicula->getNombre()) || empty($pelicula->getDuracion())) {
                 throw new Exception("Los campos no pueden ir vacios");
-            } if ($peliculaexiste) 
+            } elseif (!is_numeric($pelicula->getDuracion()) || $pelicula->getDuracion() <= 0){
+                throw new Exception("La duración debe ser un numero positivo");
+            }elseif ($peliculaexiste) 
                 throw new Exception("Pelicula existente en la base de datos");
             else {
                 $this->resPel->InsertarPel($pelicula);
@@ -57,6 +62,8 @@
                 throw new Exception("ID no existe");
             } elseif ($pelicula->getNombre()==="" || $pelicula->getDuracion()=== "") {
                 throw new Exception("Los campos no pueden ir vacios");
+            } elseif (!is_numeric($pelicula->getDuracion()) || $pelicula->getDuracion() <= 0){
+                throw new Exception("La duración debe ser un numero positivo");
             } else {
                 $this->resPel->ActualizarPel($pelicula);
             }
@@ -64,8 +71,8 @@
 
         public function EliminarPeliculas(int $id_pelicula) {
                 
-            if ($id_pelicula <= 0) {
-                throw new Exception("ID inválido");
+            if (!is_numeric($id_pelicula) || $id_pelicula <= 0) {
+                throw new Exception("ID inválido. Ingreselo nuevamente");
             } else {
                 $this->resPel->EliminarPel($id_pelicula);
             }

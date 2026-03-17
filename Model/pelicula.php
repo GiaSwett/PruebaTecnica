@@ -7,7 +7,7 @@ class pelicula {
     //atributos de la clase pelicula
     #[ORM\Id]
     #[ORM\Column(type: "integer")]
-    #[ORM\GeneratedValue()]
+    #[ORM\GeneratedValue(strategy: "AUTO")]
     private $id_pelicula;
     #[ORM\Column(type: "string")]
     private  $nombre;

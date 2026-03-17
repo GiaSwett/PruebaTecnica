@@ -15,7 +15,6 @@ class pelicula {
 
     public function setId_pelicula($id_pelicula){
         $this->id_pelicula = $id_pelicula;
-
         return $this;
     }
 

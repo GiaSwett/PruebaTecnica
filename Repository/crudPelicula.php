@@ -4,11 +4,13 @@
 
     class crudPelicula {
         private $con;
+        private $entidadPeli;
 
         //este contructor nos permite establecer la variable definida lleve la conexion con la BD
-        public function __construct(){
+        public function __construct($entidadPeli){
             $base = new conexionBD();
             $this->con = $base->conector();
+            $this->entidadPeli = $entidadPeli;
         }
 
         //obtener los datos de la base de datos de la tabla pelicula

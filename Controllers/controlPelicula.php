@@ -30,8 +30,8 @@ use FFI\Exception;
 
         public function ListarPelId(int $id_pelicula) {
             try {
-                    $pelicula = $this->servPeli->ObtenerPeliId($id_pelicula);
-                    print json_encode($pelicula);
+                    $pelicula = $this->servPeli->ObtenerPeliId($id_pelicula); 
+                    echo json_encode ($pelicula);
                 
             } catch (Exception $e) {
                 echo json_encode(["Ocurrio un problema en el servidor" => $e->getMessage()]);

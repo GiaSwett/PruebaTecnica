@@ -6,11 +6,13 @@
 class pelicula {
     //atributos de la clase pelicula
     #[ORM\Id]
-    #[ORM\Column(type: "integer")]
-    #[ORM\GeneratedValue(strategy: "AUTO")]
+    #[ORM\GeneratedValue()]
+    #[ORM\Column(name: "id_pelicula", type: "integer")]
     private $id_pelicula;
+
     #[ORM\Column(type: "string")]
     private  $nombre;
+
     #[ORM\Column(type: "integer")]
     private $duracion;
 

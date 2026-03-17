@@ -27,24 +27,17 @@
 
         //obtener los datos de la base de datos de la tabla pelicula cuando se busque por el id de la misma
         public function ObtenerId(int $id_pelicula) {
-            $peliculas = [];
             //consulta sql buscar por id
-            $resul = $this->con->prepare("SELECT id_pelicula, nombre, duracion FROM pelicula WHERE id_pelicula = ?");
-            $resul->bind_param("i", $id_pelicula);
-            $resul->execute();
-            $parametro = $resul->get_result();
+            $resul = $this->manejoentidad->getRepository(pelicula::class)->findBy(['id_pelicula' => $id_pelicula]);
 
-            if ($r = $parametro->fetch_assoc()) {
-                $peliculas = $r;
-            }
-            return $peliculas;
+            return $resul;
         }
 
         //Insertar los datos en la tabla pelicula
         public function InsertarPel(Pelicula $pelicula) {
             //uso del ORM para poder guardar una pelicula
             $this->manejoentidad->persist($pelicula);
-            $this->manejoentidad->flush();
+            $this->manejoentidad->flush(); //realiza la persistencia a la base de datos
         }
 
         //Actualizaer los datos de la tabla pelicula 

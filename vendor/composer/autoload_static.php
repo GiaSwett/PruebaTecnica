@@ -8,8 +8,8 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
 {
     public static $files = array (
         '6e3fae29631ef280660b3cdad06f25a8' => __DIR__ . '/..' . '/symfony/deprecation-contracts/function.php',
-        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '8825ede83f2f289127722d4e842cf7e8' => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme/bootstrap.php',
         'e69f7f6ee287b969198c3c9d6777bd38' => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer/bootstrap.php',
         '9d2b9fc6db0f153a0a149fefb182415e' => __DIR__ . '/..' . '/symfony/polyfill-php84/bootstrap.php',
@@ -26,16 +26,29 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Service\\' => 26,
             'Symfony\\Contracts\\Cache\\' => 24,
+            'Symfony\\Component\\Yaml\\' => 23,
             'Symfony\\Component\\VarExporter\\' => 30,
+            'Symfony\\Component\\TypeInfo\\' => 27,
             'Symfony\\Component\\String\\' => 25,
+            'Symfony\\Component\\Finder\\' => 25,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Cache\\' => 24,
+        ),
+        'R' =>
+        array (
+            'Radebatz\\TypeInfoExtras\\' => 24,
         ),
         'P' =>
         array (
             'Psr\\Log\\' => 8,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
+            'PhpParser\\' => 10,
+            'PHPStan\\PhpDocParser\\' => 21,
+        ),
+        'O' =>
+        array (
+            'OpenApi\\' => 8,
         ),
         'D' =>
         array (
@@ -80,13 +93,25 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
         array (
             0 => __DIR__ . '/..' . '/symfony/cache-contracts',
         ),
+        'Symfony\\Component\\Yaml\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/symfony/yaml',
+        ),
         'Symfony\\Component\\VarExporter\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/var-exporter',
         ),
+        'Symfony\\Component\\TypeInfo\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/symfony/type-info',
+        ),
         'Symfony\\Component\\String\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
+        ),
+        'Symfony\\Component\\Finder\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/symfony/finder',
         ),
         'Symfony\\Component\\Console\\' =>
         array (
@@ -95,6 +120,10 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
         'Symfony\\Component\\Cache\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/cache',
+        ),
+        'Radebatz\\TypeInfoExtras\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/radebatz/type-info-extras/src',
         ),
         'Psr\\Log\\' =>
         array (
@@ -107,6 +136,18 @@ class ComposerStaticInit3ba5865ee439cf319452b0df1a1dfb7c
         'Psr\\Cache\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'PhpParser\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
+        ),
+        'PHPStan\\PhpDocParser\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
+        ),
+        'OpenApi\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/zircote/swagger-php/src',
         ),
         'Doctrine\\Persistence\\' =>
         array (

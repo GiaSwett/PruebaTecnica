@@ -1,6 +1,7 @@
 {
     "require": {
         "doctrine/orm": "^3.6",
-        "symfony/cache": "^7.4"
+        "symfony/cache": "^7.4",
+        "zircote/swagger-php": "^6.0"
     }
 }

@@ -34,8 +34,12 @@
                 throw new Exception("El ID inválido. Ingreselo nuevamente");
             }else {
                 $pelicula = $this->resPel->ObtenerId($id_pelicula);
+                $peliculas = [];
+                foreach ($pelicula as $r){
+                    $peliculas[] = ['id_pelicula' => $r->getId_pelicula(), 'nombre' => $r->getNombre(),'duracion' => $r->getDuracion()];
+                }
             }
-            return $pelicula;
+            return $peliculas;
         }
 
         public function NuevaPeli(pelicula $pelicula) {
@@ -56,7 +60,7 @@
             $existe = $this->resPel->ObtenerId($pelicula->getId_pelicula());
 
             if (!$existe) {
-                throw new Exception("ID no existe");
+                throw new Exception("ID incorrecto. Ingrese uno válido");
             } elseif ($pelicula->getNombre()==="" || $pelicula->getDuracion()=== "") {
                 throw new Exception("Los campos no pueden ir vacios");
             } elseif (!is_numeric($pelicula->getDuracion()) || $pelicula->getDuracion() <= 0){

@@ -180,10 +180,10 @@ use FFI\Exception;
                     if (sizeof($pelicula) > 0) {
                         print json_encode($pelicula);
                     } else {
-                        echo json_encode(["NO SE ENCONTRARON DATOS"]);
+                        echo json_encode(["error" =>"NO SE ENCONTRARON DATOS"]);
                     }
                 } else {
-                    echo json_encode(["A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
+                    echo json_encode(["error" =>  "A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
                 }
         }
     }   

@@ -12,7 +12,6 @@ require_once("../PruebaTecnica2.0/Services/logicaPeliSala.php");
         /**
          * @param [type] $fecha_publicacion
          * @return void
-         * 
          * esta función permite evaludar que los datos que van a traer mediante la fecha sean correctos, se traen
          * mediante un array que se evalua la cantidad de datos para que se pueda mostrar los datos o dar errores en caso de que
          * ven vacios.

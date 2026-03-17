@@ -41,7 +41,7 @@
         }
 
         //Insertar los datos en la tabla pelicula
-        public function InsertarPel(pelicula $pelicula) {
+        public function InsertarPel(Pelicula $pelicula) {
             //consulta sql para guardar datos
             $this->entityManager->persist($pelicula);
             $this->entityManager->flush();

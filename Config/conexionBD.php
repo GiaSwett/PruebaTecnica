@@ -1,4 +1,8 @@
 <?php
+    require_once (__DIR__ . '/../vendor/autoload.php');
+    use Doctrine\ORM\Tools\Setup;
+    use Doctrine\ORM\EntityManager;
+
     class conexionBD{
         //variables para la conexión
         private $host = "localhost";
@@ -30,5 +34,20 @@
             }
             return $data;
         }
+
+        //para usar el ORM 
+        public function setupORM(){
+            $conf = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../src"), true);
+            return $conf;
+        }
+
+        $conn = array(
+        'driver'   => 'pdo_mysql',
+        'user'     => 'root',
+        'password' => '',
+        'dbname'   => 'mi_base',
+        );
+
+        $entityManager = EntityManager::create($conn, $conf);
     }
 ?>

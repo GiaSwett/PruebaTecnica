@@ -1,7 +1,4 @@
 <?php
-
-use function PHPSTORM_META\type;
-
     require_once ("../PruebaTecnica2.0/Repository/crudPelicula.php");
     require_once ("../PruebaTecnica2.0/Model/pelicula.php");
 

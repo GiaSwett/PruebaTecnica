@@ -37,9 +37,9 @@
         }
 
         function IniciarEntityManager(){
-            $conf = ORMSetup::createAttributeMetadataConfig([__DIR__.'/../src/Model']);
-            $conf->setProxyDir(__DIR__.'/../vendor/Proxies');
-            $conf->setProxyNamespace('Proxies');
+            $conf = ORMSetup::createAttributeMetadataConfig([__DIR__.'/../src/Model']); //esta funcion nos ayuda a que se establezca una conexion entre la clase mapeada y pueda ayudar a sea más facil poder prepararlas para la base de datos
+            $conf->setProxyDir(__DIR__.'/../vendor/Proxies'); //ruta donde se almacenaran las clases proxie
+            $conf->setProxyNamespace('Proxies'); //nombre de las clases proxie
             $conf->setAutoGenerateProxyClasses(true);
             $conx = DriverManager::getConnection(array('driver' => 'pdo_mysql', 'user' => $this->usuario, 'password' => $this->clave,
                             'host' => $this->host, 'dbname' => $this->db));

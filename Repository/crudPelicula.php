@@ -1,16 +1,16 @@
 <?php
     require_once("../PruebaTecnica2.0/Config/conexionBD.php");
     require_once("../PruebaTecnica2.0/Model/pelicula.php");
-    use Doctrine\ORM\EntityManagerInterface;
 
     class crudPelicula {
         private $con;
-        private EntityManagerInterface $entityManager;
+        private $entityManager;
 
         //este contructor nos permite establecer la variable definida lleve la conexion con la BD
         public function __construct(){
             $base = new conexionBD();
             $this->con = $base->conector();
+            $this->entityManager = $base->inicializarEntityManager();
         }
 
         //obtener los datos de la base de datos de la tabla pelicula

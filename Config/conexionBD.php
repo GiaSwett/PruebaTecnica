@@ -41,6 +41,9 @@
             $config = new Configuration();
             $driver = new AttributeDriver([__DIR__ . '/../src/Model']);
             $config->setMetadataDriverImpl($driver);
+            $config->setProxyDir(__DIR__ . '/../var/proxies');
+            $config->setProxyNamespace('Proxies');
+            $config->setAutoGenerateProxyClasses(true);
 
             $connection = DriverManager::getConnection(['dbname'=> $this->db, 'user'=> $this->usuario,
                 'password' => $this->clave, 'host' => $this->host, 'driver' => 'pdo_mysql', ]);

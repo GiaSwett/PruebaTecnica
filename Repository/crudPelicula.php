@@ -42,7 +42,7 @@
 
         //Insertar los datos en la tabla pelicula
         public function InsertarPel(Pelicula $pelicula) {
-            //consulta sql para guardar datos
+            //uso del ORM para poder guardar una pelicula
             $this->manejoentidad->persist($pelicula);
             $this->manejoentidad->flush();
         }

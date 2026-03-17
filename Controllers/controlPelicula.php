@@ -18,12 +18,13 @@ use FFI\Exception;
                 
                 if (is_array($pelicula)) {
                     if (sizeof($pelicula) > 0) {
+                        header('Content-Type: application/json'); 
                         echo json_encode($pelicula);
                     } else {
-                        echo json_encode(["mensaje" => "No hay películas registradas"]);
+                        echo json_encode(["Error" => "No hay películas registradas"]);
                     }
                 } else {
-                    echo json_encode(["A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
+                    echo json_encode(["Error" => "A OCURRIDO UN ERROR AL TRAER LOS DATOS"]);
                 }
         }
 

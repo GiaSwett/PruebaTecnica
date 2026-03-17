@@ -72,7 +72,7 @@ use FFI\Exception;
         }
 
         /** 
-         * @OA\Post( 
+         * @OA\POST( 
          *      summary="Inserta una nueva pelicula", 
          *      description="Inserta una nueva pelicula a la tabla correspondiente", 
          *      @OA\RequestBody( 

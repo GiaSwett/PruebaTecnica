@@ -38,19 +38,12 @@
         }
 
         public function inicializarEntityManager(){
-            $paths = [__DIR__ . '/../src/Model'];
-
             $config = new Configuration();
-            $driver = new AttributeDriver($paths);
+            $driver = new AttributeDriver([__DIR__ . '/../src/Model']);
             $config->setMetadataDriverImpl($driver);
 
-            $connection = DriverManager::getConnection([
-                'dbname'   => $this->db,
-                'user'     => $this->usuario,
-                'password' => $this->clave,
-                'host'     => $this->host,
-                'driver'   => 'pdo_mysql',
-            ]);
+            $connection = DriverManager::getConnection(['dbname'=> $this->db, 'user'=> $this->usuario,
+                'password' => $this->clave, 'host' => $this->host, 'driver' => 'pdo_mysql', ]);
 
             $entityManager = new EntityManager($connection, $config);
             return $entityManager;

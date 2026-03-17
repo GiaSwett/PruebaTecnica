@@ -1,11 +1,17 @@
 <?php
+    use Doctrine\ORM\Mapping as ORM;
 
-#[ORM/Entity];
-#[ORM/Table (name: "Pelicula")];
+    #[ORM\Entity]
+    #[ORM\Table(name: "Pelicula")]
 class pelicula {
     //atributos de la clase pelicula
+    #[ORM\Id]
+    #[ORM\Column(type: "integer")]
+    #[ORM\GeneratedValue('AUTO')]
     private $id_pelicula;
+    #[ORM\Column(type: "varchar")]
     private  $nombre;
+    #[ORM\Column(type: "integer")]
     private $duracion;
 
     //nos permite crear objetos con los datos de la clase

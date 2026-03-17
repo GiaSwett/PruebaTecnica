@@ -4,6 +4,7 @@
     class logicaPeliSala {
         private $resPeliSala;
 
+        //instancia del objecto que nos permitira poder acceder a las funciones del repositorio
         public function __construct(){
             $this->resPeliSala = new crudPeliSala ();
         }
@@ -24,7 +25,7 @@
         }
 
         /*validacion del nombre que no venga vacio y que se cumpla las condiciones establecidas que 
-        se deben mostrar de acuerdo a la cantidad */
+        se deben mostrar de acuerdo a la cantidad de peliculas que contiene cada sala*/
         public function ObtenerSalaNombre(string $nombre) {
             if ($nombre === "") {
                 throw new Exception("Debe ingresar el nombre.");

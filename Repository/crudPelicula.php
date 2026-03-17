@@ -4,7 +4,6 @@
 
     class crudPelicula {
         private $con;
-        private $entityManager;
 
         //este contructor nos permite establecer la variable definida lleve la conexion con la BD
         public function __construct(){

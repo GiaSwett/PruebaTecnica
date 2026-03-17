@@ -1,4 +1,9 @@
 <?php
+    require_once (__DIR__.'/../vendor/autoload.php');
+    use Doctrine\ORM\EntityManager;
+    use Doctrine\ORM\ORMSetup;
+    use Doctrine\DBAL\DriverManager;
+
     class conexionBD{
         //variables para la conexión
         private $host = "localhost";
@@ -29,6 +34,14 @@
                 }
             }
             return $data;
+        }
+
+        function IniciarEntityManager(){
+            $conf = ORMSetup::createAttributeMetadataConfig([__DIR__.'/../Model']);
+            $conx = DriverManager::getConnection(array('driver' => 'pdo_mysql', 'user' => $this->usuario, 'password' => $this->clave,
+                            'host' => $this->host, 'dbname' => $this->db));
+            
+            $entityManager = new EntityManager($conx, $conf);
         }
     }
 ?>

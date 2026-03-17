@@ -3,6 +3,7 @@
     require_once ('../PruebaTecnica2.0/Controllers/controlPeliSala.php');
     require_once ('../PruebaTecnica2.0/Model/pelicula.php');
     require_once ('../PruebaTecnica2.0/Model/pelicula_salacine.php');
+    require_once (__DIR__.'/../vendor/autoload.php');
 
     $controlPeli = new controlPelicula();
     $controlPeliSala = new controlPeliSala();

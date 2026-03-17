@@ -1,4 +1,7 @@
 <?php
+
+#[ORM/Entity];
+#[ORM/Table (name: "Pelicula")];
 class pelicula {
     //atributos de la clase pelicula
     private $id_pelicula;

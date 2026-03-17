@@ -37,11 +37,15 @@
         }
 
         function IniciarEntityManager(){
-            $conf = ORMSetup::createAttributeMetadataConfig([__DIR__.'/../Model']);
+            $conf = ORMSetup::createAttributeMetadataConfig([__DIR__.'/../src/Model']);
+            $conf->setProxyDir(__DIR__.'/../vendor/Proxies');
+            $conf->setProxyNamespace('Proxies');
+            $conf->setAutoGenerateProxyClasses(true);
             $conx = DriverManager::getConnection(array('driver' => 'pdo_mysql', 'user' => $this->usuario, 'password' => $this->clave,
                             'host' => $this->host, 'dbname' => $this->db));
             
             $entityManager = new EntityManager($conx, $conf);
+            return $entityManager;
         }
     }
 ?>

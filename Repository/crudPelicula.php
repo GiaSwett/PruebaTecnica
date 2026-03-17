@@ -4,13 +4,13 @@
 
     class crudPelicula {
         private $con;
-        private $entityManager;
+        private $manejoentidad;
 
         //este contructor nos permite establecer la variable definida lleve la conexion con la BD
         public function __construct(){
             $base = new conexionBD();
             $this->con = $base->conector();
-            $this->entityManager = $base->IniciarEntityManager();
+            $this->manejoentidad = $base->IniciarEntityManager();
         }
 
         //obtener los datos de la base de datos de la tabla pelicula
@@ -43,8 +43,8 @@
         //Insertar los datos en la tabla pelicula
         public function InsertarPel(Pelicula $pelicula) {
             //consulta sql para guardar datos
-            $this->entityManager->persist($pelicula);
-            $this->entityManager->flush();
+            $this->manejoentidad->persist($pelicula);
+            $this->manejoentidad->flush();
         }
 
         //Actualizaer los datos de la tabla pelicula 

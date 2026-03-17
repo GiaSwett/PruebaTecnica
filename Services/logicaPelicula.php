@@ -3,12 +3,15 @@
     require_once ("../PruebaTecnica2.0/Model/pelicula.php");
 
     class logicaPelicula{
+        //variable que nos ayudara a llamar a las funciones del CRUD
         private $resPel;
 
+        //En este constructor se especifica que es una instancia de la clase crudPelicula
         public function __construct() {
             $this->resPel = new crudPelicula();
         }
 
+        //Metodo que nos dice si hay datos y los muestra caso contrario nos salta un error
         public function ObtenerPeli() : array {
             $peliculas = $this->resPel->Obtener();
 
@@ -18,6 +21,14 @@
             return $peliculas;
         }
 
+        /**
+         * Función para obtener por id
+         * @param [integer] $id_pelicula
+         * @return void
+         * 
+         * esta función nos devuelve los datos especificos de una pelicula mediante el ID, nos tira el error
+         * en caso de que el ID ingresado no contenga un dato.
+         */
         public function ObtenerPeliId($id_pelicula) {
             if ($id_pelicula <= 0) {
                 throw new Exception("El ID inválido.");

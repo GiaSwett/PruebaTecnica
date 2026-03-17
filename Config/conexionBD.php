@@ -38,16 +38,16 @@
         //para usar el ORM 
         public function setupORM(){
             $conf = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../src"), true);
-            return $conf;
+            
+            $conn = array(
+                'driver' => 'pdo_mysql', 
+                'host' => $this->host,
+                'port' => $this->puerto,
+                'user' => $this->usuario,
+                'password' => $this->clave, 
+                'dbname' => $this->db);
+            $entityManager = EntityManager::create($conn, $conf);
+            return $entityManager;
         }
-
-        $conn = array(
-        'driver'   => 'pdo_mysql',
-        'user'     => 'root',
-        'password' => '',
-        'dbname'   => 'mi_base',
-        );
-
-        $entityManager = EntityManager::create($conn, $conf);
     }
 ?>

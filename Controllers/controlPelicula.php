@@ -1,4 +1,7 @@
-<?php 
+<?php
+
+use FFI\Exception;
+
     require_once("../PruebaTecnica2.0/Services/logicaPelicula.php");
     require_once ("../PruebaTecnica2.0/Model/pelicula.php");
 
@@ -44,11 +47,22 @@
         }
 
         public function ModificarPeli(pelicula $pelicula) {            
-            return $this->servPeli->ModificarPeli($pelicula);
+            try {
+                return $this->servPeli->ModificarPeli($pelicula);
+                echo json_encode(["mensaje" => "Película modificada correctamente"]);
+            }catch (Exception $e) {
+                echo json_encode(["error" => $e->getMessage()]);
+            }
+            
         }
 
         public function EliminarPeli(int $id_pelicula) {
-            return $this->servPeli->EliminarPeliculas($id_pelicula);
+            try {
+                return $this->servPeli->EliminarPeliculas($id_pelicula);
+                echo json_encode(["mensaje" => "Película modificada correctamente"]);
+            }catch (Exception $e) {
+                echo json_encode(["error" => $e->getMessage()]);
+            }
         }
 
         public function Buscar (string $nombre){

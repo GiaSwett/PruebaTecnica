@@ -6,8 +6,7 @@
         private $resPel;
 
         public function __construct() {
-            $pelicula = new Pelicula();
-            $this->resPel = new crudPelicula($pelicula);
+            $this->resPel = new crudPelicula();
         }
 
         public function ObtenerPeli() : array {

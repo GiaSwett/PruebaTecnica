@@ -1,0 +1,354 @@
+{
+  "info": {
+    "_postman_id": "153f774e-0e31-4643-9901-39e66830dc64",
+    "name": "Prueba",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "47771923",
+    "_collection_link": "https://go.postman.co/collection/47771923-153f774e-0e31-4643-9901-39e66830dc64?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "ObtenerPeliculas",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "AgregarPeliculas",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful POST request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Capitán América: Civil War\",\r\n    \"duracion\": \"148\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ModificarPeliculas",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful PUT request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        },
+        {
+          "listen": "prerequest",
+          "script": {
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"nombre\": \"Capitan America: Civil War\",\r\n    \"duracion\": 148\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/?id=23",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "23"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "BuscarPorId",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/?id=23",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "23"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EliminarPeliculas",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Successful DELETE request\", function () {",
+              "    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+              "});",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/?id=5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "BucarNombre",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/?nombre=El padrino",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ],
+          "query": [
+            {
+              "key": "nombre",
+              "value": "El padrino"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DisponibilidadSala",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/?nom=Sala 3D",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ],
+          "query": [
+            {
+              "key": "nom",
+              "value": "Sala 3D"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "BuscarFecha",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/cursoPHP/PruebaTecnica2.0/?fecha=2026-01-25",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "cursoPHP",
+            "PruebaTecnica2.0",
+            ""
+          ],
+          "query": [
+            {
+              "key": "fecha",
+              "value": "2026-01-25"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

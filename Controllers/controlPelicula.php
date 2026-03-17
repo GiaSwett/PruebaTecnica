@@ -47,21 +47,17 @@ use FFI\Exception;
         }
 
         /**
-         * @OA\GET(
-         *  summary = Filtro de pelicula por Id
-         *  description="Muestra datos especificos al hacer una busqueda mediante el Id", 
-         *  @OA\Response( 
-         *      response=200, 
-         *      description = Muestra los datos que correspondan a ese Id, 
-         *       @OA\Response(
+         *  @OA\GET(
+         *     path = "/id"
+         *     summary = Filtro de pelicula por Id
+         *     description="Muestra datos especificos al hacer una busqueda mediante el Id", 
+         *     @OA\Response( 
+         *          response=200, 
+         *          description = Muestra los datos que correspondan a ese Id, 
+         *      ),
+         *      @OA\Response(
          *           response=400,
          *           description = Mensaje de error,
-         *             @OA\Items(
-         *                 @OA\Property(property="id_pelicula", type="integer"),
-         *                 @OA\Property(property="nombre", type="string"),
-         *                 @OA\Property(property="duracion", type="integer"),
-         *             )
-         *          )
          *      )
          *  )
          */
@@ -80,21 +76,20 @@ use FFI\Exception;
          *      summary="Inserta una nueva pelicula", 
          *      description="Inserta una nueva pelicula a la tabla correspondiente", 
          *      @OA\RequestBody( 
-         *          content="Objeto de búsqueda del lado del cliente", 
+         *          content= application/json, 
          *          required=true, 
          *          @OA\MediaType( 
          *              mediaType="application/json",                  
-         *              @OA\Schema(ref="#/components/schemas/SearchObject") 
+         *              @OA\Schema(ref="#/components/parameters/token") 
          *          ) 
          *      ), 
          *      @OA\Response( 
          *          response=200, 
-         *          description="Éxito", 
-         *          @OA\Schema(ref="#/components/schemas/SearchResultObject)    
+         *          description="Pelicula creada correctamente", 
          *      ), 
          *      @OA\Response( 
          *          response=404, 
-         *          description="No se pudo encontrar el recurso" 
+         *          description="Mensaje de error" 
          *      )    
          *  ) 
          */
@@ -107,6 +102,28 @@ use FFI\Exception;
             }
         }
 
+        /** 
+         * @OA\PUT( 
+         *      summary="Modificar una pelicula existente en la BD", 
+         *      description="Se puede modificar el nombre y la duración de una pelicula que se encuentre disponible en la base de datos", 
+         *      @OA\RequestBody( 
+         *          content= application/json, 
+         *          required=true, 
+         *          @OA\MediaType( 
+         *              mediaType="application/json",                  
+         *              @OA\Schema(ref="#/components/parameters/token") 
+         *          ) 
+         *      ), 
+         *      @OA\Response( 
+         *          response=200, 
+         *          description="Pelicula modificada correctamente", 
+         *      ), 
+         *      @OA\Response( 
+         *          response=404, 
+         *          description="Mensaje de error" 
+         *      )    
+         *  ) 
+         */
         public function ModificarPeli(pelicula $pelicula) {            
             try {
                 return $this->servPeli->ModificarPeli($pelicula);
@@ -117,15 +134,45 @@ use FFI\Exception;
             
         }
 
+        /**
+         *  @OA\DELETE(
+         *     path = "/id"
+         *     summary = Eliminación de peliculas
+         *     description="Eliminación lógica, ya que solo cambia el estado de la pelicula de disponible a no disponible", 
+         *     @OA\Response( 
+         *          response=200, 
+         *          description = "Pelicula Eliminada correctamente", 
+         *      ),
+         *      @OA\Response(
+         *           response=400,
+         *           description = Mensaje de error,
+         *      )
+         *  )
+         */
         public function EliminarPeli(int $id_pelicula) {
             try {
                 return $this->servPeli->EliminarPeliculas($id_pelicula);
-                echo json_encode(["mensaje" => "Película modificada correctamente"]);
+                echo json_encode(["mensaje" => "Película eliminada correctamente"]);
             }catch (Exception $e) {
                 echo json_encode(["error" => $e->getMessage()]);
             }
         }
 
+        /**
+         *  @OA\GET(
+         *     path = "/nombre"
+         *     summary = Filtro de pelicula por nombre
+         *     description="Muestra datos especificos al hacer una busqueda mediante el nombre", 
+         *     @OA\Response( 
+         *          response=200, 
+         *          description = Muestra los datos que correspondan a al nombre que se especifico, 
+         *      ),
+         *      @OA\Response(
+         *           response=400,
+         *           description = Mensaje de error,
+         *      )
+         *  )
+         */
         public function Buscar (string $nombre){
             $pelicula = $this->servPeli->BuscarPorNombre($nombre);
 

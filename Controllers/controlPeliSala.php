@@ -10,8 +10,6 @@ require_once("../PruebaTecnica2.0/Services/logicaPeliSala.php");
         }
 
         /**
-         * Undocumented function
-         *
          * @param [type] $fecha_publicacion
          * @return void
          * 
@@ -34,8 +32,6 @@ require_once("../PruebaTecnica2.0/Services/logicaPeliSala.php");
         }
 
         /**
-         * Undocumented function
-         *
          * @param string $nombre
          * @return void
          * 

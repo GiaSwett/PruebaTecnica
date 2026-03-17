@@ -1,10 +1,4 @@
 <?php
-    require_once (__DIR__ . '/../vendor/autoload.php');
-    use Doctrine\ORM\Configuration;
-    use Doctrine\ORM\EntityManager;
-    use Doctrine\DBAL\DriverManager;
-    use Doctrine\ORM\Mapping\Driver\AttributeDriver;
-
     class conexionBD{
         //variables para la conexión
         private $host = "localhost";
@@ -35,21 +29,6 @@
                 }
             }
             return $data;
-        }
-
-        public function inicializarEntityManager(){
-            $config = new Configuration();
-            $driver = new AttributeDriver([__DIR__ . '/../src/Model']);
-            $config->setMetadataDriverImpl($driver);
-            $config->setProxyDir(__DIR__ . '/../var/proxies');
-            $config->setProxyNamespace('Proxies');
-            $config->setAutoGenerateProxyClasses(true);
-
-            $connection = DriverManager::getConnection(['dbname'=> $this->db, 'user'=> $this->usuario,
-                'password' => $this->clave, 'host' => $this->host, 'driver' => 'pdo_mysql', ]);
-
-            $entityManager = new EntityManager($connection, $config);
-            return $entityManager;
         }
     }
 ?>

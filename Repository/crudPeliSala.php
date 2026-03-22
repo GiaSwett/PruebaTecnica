@@ -8,6 +8,7 @@
 
         public function __construct(){
             $bd = new conexionBD ();
+            $bd->VariablesConexion();
             $this->conn = $bd->conector();
         }
 

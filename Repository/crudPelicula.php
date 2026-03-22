@@ -9,6 +9,7 @@
         //este contructor nos permite establecer la variable definida lleve la conexion con la BD
         public function __construct(){
             $base = new conexionBD();
+            $base->VariablesConexion();
             $this->con = $base->conector();
             $this->manejoentidad = $base->IniciarEntityManager();
         }

@@ -4,14 +4,12 @@
     use Doctrine\ORM\ORMSetup;
     use Doctrine\DBAL\DriverManager;
 
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
+    $dotenv->load();
+    
     class conexionBD{
         //variables de conexion
         public $conex;
-        
-        public function VariablesConexion(){
-            $dotenv = Dotenv\Dotenv::createImmutable(__DIR__.'/..');
-            $dotenv->load();
-        }
 
         //conexión a la base de datos
         public function conector(){

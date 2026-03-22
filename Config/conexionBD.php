@@ -5,17 +5,17 @@
     use Doctrine\DBAL\DriverManager;
 
     class conexionBD{
-        //variables para la conexión
-        private $host = "localhost";
-        private $usuario = "Itati_prueba";
-        private $clave = "Proy2123";
-        private $puerto = 3306;
-        private $db = "cine";
+        //variables de conexion
         public $conex;
+        
+        public function VariablesConexion(){
+            $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+            $dotenv->load();
+        }
 
         //conexión a la base de datos
         public function conector(){
-            $this -> conex = mysqli_connect($this ->host, $this ->usuario, $this ->clave, $this ->db, $this ->puerto);
+            $this -> conex = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_NAME']);
             if (mysqli_connect_error()) {
             printf("Hubo un error al momento de hacer la conexión %d",mysqli_connect_error());
             exit;
@@ -41,8 +41,8 @@
             $conf->setProxyDir(__DIR__.'/../vendor/Proxies'); //ruta donde se almacenaran las clases proxie
             $conf->setProxyNamespace('Proxies'); //nombre de las clases proxie
             $conf->setAutoGenerateProxyClasses(true);
-            $conx = DriverManager::getConnection(array('driver' => 'pdo_mysql', 'user' => $this->usuario, 'password' => $this->clave,
-                            'host' => $this->host, 'dbname' => $this->db));
+            $conx = DriverManager::getConnection(array('driver' => 'pdo_mysql', 'user' => $_ENV['DB_USER'], 'password' => $_ENV['DB_PASS'],
+                            'host' => $_ENV['DB_HOST'], 'dbname' => $_ENV['DB_NAME']));
             
             $entityManager = new EntityManager($conx, $conf);
             return $entityManager;
